@@ -85,20 +85,20 @@ public class SingerHandle {
         if (findById(id) == null) {
             System.err.println("no have singer with id " + id);
         } else {
-            boolean isExist = false;
+            boolean haveSong = false;
             for (Song s : SongHandle.songs) {
-                if (s.getSinger() != null) {
-                    isExist = true;
+                if (s.getSinger().getSingerId() == id ) {
+                    haveSong = true;
                     break;
                 }
             }
 
-            if (isExist) {
+//Exist song that singer perform
+            if (haveSong) {
+                System.err.println("Can not delete because there is a song performed by this singer");
+            } else {
                 singers.remove(findById(id));
                 System.out.println("Delete successfully");
-
-            } else {
-                System.out.println("Can not delete because there is a song performed by this singer");
             }
 
         }
